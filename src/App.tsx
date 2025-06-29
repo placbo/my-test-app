@@ -26,6 +26,14 @@ function App() {
                 About
               </Link>
             </li>
+            <li>
+              <Link
+                to="/pokemon"
+                className={location.pathname === "/pokemon" ? "active" : ""}
+              >
+                Pokemon
+              </Link>
+            </li>
           </ul>
         </nav>
       </header>
