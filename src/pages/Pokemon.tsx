@@ -113,25 +113,6 @@ function Pokemon() {
           {pokemon.name}
         </h3>
         <div>
-          {imageLoading && (
-            <div
-              style={{
-                width: "300px",
-                height: "300px",
-                border: "2px solid #ddd",
-                borderRadius: "8px",
-                backgroundColor: "#f0f0f0",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "1.2rem",
-                color: "#666",
-                zIndex: 1,
-              }}
-            >
-              🖼️ Loading image...
-            </div>
-          )}
           <img
             src={
               pokemon.sprites.other["official-artwork"].front_default ||
@@ -142,7 +123,7 @@ function Pokemon() {
             onError={() => setImageLoading(false)}
             style={{
               maxWidth: "300px",
-              height: "auto",
+              height: "300px",
               border: "2px solid #ddd",
               borderRadius: "8px",
               padding: "1rem",
