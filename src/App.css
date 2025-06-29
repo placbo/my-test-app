@@ -122,6 +122,34 @@ main {
   color: rgba(255, 255, 255, 0.9);
 }
 
+.delete-button {
+  background-color: #f38ba8;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 1rem;
+}
+
+.delete-button:hover:not(:disabled) {
+  background-color: #d66a7e;
+  transform: translateY(-1px);
+}
+
+.delete-button:disabled {
+  background-color: rgba(243, 139, 168, 0.5);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.delete-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
 .card.error {
   border-left: 4px solid #f38ba8;
   background-color: rgba(243, 139, 168, 0.1);

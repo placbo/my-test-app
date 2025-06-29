@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchMessages, postMessage } from "../api.service";
+import { fetchMessages, postMessage, deleteMessage } from "../api.service";
 import type { Message, NewMessageRequest } from "../api.service";
 
 export default function Home() {
@@ -11,6 +11,7 @@ export default function Home() {
     author: "",
   });
   const [submitting, setSubmitting] = useState<boolean>(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   useEffect(() => {
     fetchMessages()
@@ -60,6 +61,28 @@ export default function Home() {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleDeleteMessage = async (messageId: number) => {
+    if (!confirm("Are you sure you want to delete this message?")) {
+      return;
+    }
+
+    setDeletingId(messageId);
+    try {
+      const response = await deleteMessage(messageId);
+      if (response.success) {
+        setMessages(messages.filter((message) => message.id !== messageId));
+        setError("");
+      } else {
+        setError(response.message || "Failed to delete message");
+      }
+    } catch (err) {
+      setError("Failed to delete message");
+      console.error(err);
+    } finally {
+      setDeletingId(null);
+    }
   };
 
   if (loading) {
@@ -129,6 +152,14 @@ export default function Home() {
                 <span className="message-date">
                   {formatDate(message.created)}
                 </span>
+                <button
+                  onClick={() => handleDeleteMessage(message.id)}
+                  disabled={deletingId === message.id}
+                  className="delete-button"
+                  title="Delete message"
+                >
+                  {deletingId === message.id ? "Deleting..." : "Delete"}
+                </button>
               </div>
               <div className="message-content">{message.message}</div>
             </div>

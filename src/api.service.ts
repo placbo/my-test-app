@@ -22,6 +22,13 @@ export interface MessagesApiResponse {
   message: string;
 }
 
+// Types for delete message API response
+export interface DeleteMessageApiResponse {
+  success: boolean;
+  message: string;
+  data: Message;
+}
+
 const API_BASE_URL = import.meta.env.VITE_API_URL;
 const MESSAGE_SERVICE_PATH = "/message";
 const MESSAGES_SERVICE_PATH = "/messages";
@@ -59,6 +66,20 @@ export async function postMessage(
     return response.data.data;
   } catch (error) {
     console.error("Error posting message:", error);
+    throw error;
+  }
+}
+
+export async function deleteMessage(
+  id: number
+): Promise<DeleteMessageApiResponse> {
+  try {
+    const response = await axios.delete<DeleteMessageApiResponse>(
+      `${API_BASE_URL}${MESSAGES_SERVICE_PATH}/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting message:", error);
     throw error;
   }
 }
