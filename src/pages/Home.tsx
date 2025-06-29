@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
-import { fetchMessages, postMessage, deleteMessage } from "../api.service";
-import type { Message, NewMessageRequest } from "../api.service";
+import { fetchMessages, deleteMessage } from "../api.service";
+import type { Message } from "../api.service";
+import MessageForm from "../components/MessageForm";
 
 export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
-  const [formData, setFormData] = useState<NewMessageRequest>({
-    text: "",
-    author: "",
-  });
-  const [submitting, setSubmitting] = useState<boolean>(false);
   const [deletingId, setDeletingId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -36,31 +32,12 @@ export default function Home() {
     });
   };
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.text.trim() || !formData.author.trim()) {
-      return;
-    }
-
-    setSubmitting(true);
-    try {
-      const newMessage = await postMessage(formData);
-      setMessages([newMessage, ...messages]);
-      setFormData({ text: "", author: "" });
-      setError("");
-    } catch (err) {
-      setError("Failed to submit message");
-      console.error(err);
-    } finally {
-      setSubmitting(false);
-    }
+  const handleMessageSubmitted = (newMessage: Message) => {
+    setMessages([newMessage, ...messages]);
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleError = (errorMessage: string) => {
+    setError(errorMessage);
   };
 
   const handleDeleteMessage = async (messageId: number) => {
@@ -107,39 +84,11 @@ export default function Home() {
     <div>
       <h1>Welcome, Karl</h1>
 
-      <div className="form-container">
-        <h2>Share your thoughts below.</h2>
+      <MessageForm
+        onMessageSubmitted={handleMessageSubmitted}
+        onError={handleError}
+      />
 
-        <form onSubmit={handleFormSubmit} className="message-form">
-          <div className="form-group">
-            <label htmlFor="author">Author:</label>
-            <input
-              type="text"
-              id="author"
-              name="author"
-              value={formData.author}
-              onChange={handleInputChange}
-              placeholder="Enter your name"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="text">Message:</label>
-            <textarea
-              id="text"
-              name="text"
-              value={formData.text}
-              onChange={handleInputChange}
-              placeholder="Enter your message"
-              rows={3}
-              required
-            />
-          </div>
-          <button type="submit" disabled={submitting}>
-            {submitting ? "Submitting..." : "Submit Message"}
-          </button>
-        </form>
-      </div>
       <h2>Messages</h2>
       {messages.length === 0 ? (
         <div className="card">No messages found.</div>
