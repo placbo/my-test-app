@@ -14,6 +14,13 @@ export default function About() {
         <p>
           <strong>Current Date:</strong> {currentDate}
         </p>
+        <button
+          onClick={() => {
+            throw new Error("This is your first error!");
+          }}
+        >
+          Break the world
+        </button>
       </div>
 
       <div style={{ textAlign: "center", margin: "30px 0" }}>
