@@ -1,19 +1,16 @@
-import { useState } from "react";
-import { postMessage } from "./api.service";
-import type { Message, NewMessageRequest } from "./api.service";
+import { useState } from 'react';
+import { postMessage } from './api.service';
+import type { Message, NewMessageRequest } from './api.service';
 
 interface MessageFormProps {
   onMessageSubmitted: (newMessage: Message) => void;
   onError: (error: string) => void;
 }
 
-export default function MessageForm({
-  onMessageSubmitted,
-  onError,
-}: MessageFormProps) {
+export default function MessageForm({ onMessageSubmitted, onError }: MessageFormProps) {
   const [formData, setFormData] = useState<NewMessageRequest>({
-    text: "",
-    author: "",
+    text: '',
+    author: '',
   });
   const [submitting, setSubmitting] = useState<boolean>(false);
 
@@ -26,20 +23,18 @@ export default function MessageForm({
     setSubmitting(true);
     try {
       const newMessage = await postMessage(formData);
-      setFormData({ text: "", author: "" });
+      setFormData({ text: '', author: '' });
       onMessageSubmitted(newMessage);
-      onError("");
+      onError('');
     } catch (err) {
-      onError("Failed to submit message");
+      onError('Failed to submit message');
       console.error(err);
     } finally {
       setSubmitting(false);
     }
   };
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -74,7 +69,7 @@ export default function MessageForm({
           />
         </div>
         <button type="submit" disabled={submitting}>
-          {submitting ? "Submitting..." : "Submit Message"}
+          {submitting ? 'Submitting...' : 'Submit Message'}
         </button>
       </form>
     </div>

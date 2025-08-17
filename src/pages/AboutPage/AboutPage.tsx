@@ -1,8 +1,8 @@
 export default function AboutPage() {
-  const currentDate = new Date().toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+  const currentDate = new Date().toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
   });
 
   return (
@@ -10,29 +10,29 @@ export default function AboutPage() {
       <h1>About Page</h1>
       <p>This is the about page of our application.</p>
 
-      <div style={{ margin: "20px 0" }}>
+      <div style={{ margin: '20px 0' }}>
         <p>
           <strong>Current Date:</strong> {currentDate}
         </p>
         <button
           onClick={() => {
-            throw new Error("This is your first error!");
+            throw new Error('This is your first error!');
           }}
         >
           Break the world
         </button>
       </div>
 
-      <div style={{ textAlign: "center", margin: "30px 0" }}>
+      <div style={{ textAlign: 'center', margin: '30px 0' }}>
         <svg
           width="300"
           height="250"
           viewBox="0 0 300 250"
           xmlns="http://www.w3.org/2000/svg"
           style={{
-            border: "2px solid #ddd",
-            borderRadius: "10px",
-            backgroundColor: "#f0f8ff",
+            border: '2px solid #ddd',
+            borderRadius: '10px',
+            backgroundColor: '#f0f8ff',
           }}
         >
           {/* Sky background */}
@@ -59,14 +59,7 @@ export default function AboutPage() {
             stroke="#8B4513"
             strokeWidth="2"
           />
-          <line
-            x1="240"
-            y1="120"
-            x2="240"
-            y2="150"
-            stroke="#8B4513"
-            strokeWidth="2"
-          />
+          <line x1="240" y1="120" x2="240" y2="150" stroke="#8B4513" strokeWidth="2" />
           <circle cx="233" cy="135" r="1.5" fill="#000" />
           <circle cx="247" cy="135" r="1.5" fill="#000" />
 
@@ -83,14 +76,7 @@ export default function AboutPage() {
           />
 
           {/* Barn roof details */}
-          <line
-            x1="210"
-            y1="110"
-            x2="270"
-            y2="110"
-            stroke="#8B0000"
-            strokeWidth="2"
-          />
+          <line x1="210" y1="110" x2="270" y2="110" stroke="#8B0000" strokeWidth="2" />
 
           {/* Side windows */}
           <rect x="205" y="115" width="8" height="8" fill="#4169E1" />
@@ -123,12 +109,7 @@ export default function AboutPage() {
           <circle cx="155" cy="88" r="2" fill="#000" />
 
           {/* Farmer's smile */}
-          <path
-            d="M 145 95 Q 150 100 155 95"
-            stroke="#000"
-            strokeWidth="2"
-            fill="none"
-          />
+          <path d="M 145 95 Q 150 100 155 95" stroke="#000" strokeWidth="2" fill="none" />
 
           {/* Pig body */}
           <ellipse cx="80" cy="180" rx="30" ry="20" fill="#FFB6C1" />
@@ -172,7 +153,7 @@ export default function AboutPage() {
           <rect x="8" y="170" width="27" height="3" fill="#8B4513" />
           <rect x="8" y="180" width="27" height="3" fill="#8B4513" />
         </svg>
-        <p style={{ marginTop: "10px", fontStyle: "italic", color: "#666" }}>
+        <p style={{ marginTop: '10px', fontStyle: 'italic', color: '#666' }}>
           Farmer Joe and his little pig friend
         </p>
       </div>

@@ -21,7 +21,7 @@
   justify-content: center;
   font-size: 1.2rem;
   color: #666;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   box-sizing: border-box;
 }
@@ -43,8 +43,12 @@
 }
 
 @keyframes pokemon-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Card container and card styles */
@@ -78,7 +82,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   padding: 1rem;
   box-sizing: border-box;
 }
@@ -125,13 +129,13 @@
   text-transform: capitalize;
   margin-bottom: 1rem;
   font-size: 2rem;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .pokemon-card-back-id {
   font-size: 1.2rem;
   margin-bottom: 1rem;
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 0.5rem 1rem;
   border-radius: 20px;
 }
@@ -153,7 +157,7 @@
   border-radius: 8px;
   cursor: pointer;
   margin-top: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease;
 }
 .pokemon-btn:hover {

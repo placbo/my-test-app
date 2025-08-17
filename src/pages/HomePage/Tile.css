@@ -4,15 +4,21 @@
   align-items: center;
   background-color: #1e1e2e; /* matches header background */
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   text-decoration: none;
-  color: rgba(255,255,255,0.85); /* matches nav link color */
+  color: rgba(255, 255, 255, 0.85); /* matches nav link color */
   padding: 1rem;
-  transition: box-shadow 0.2s, transform 0.2s, filter 0.2s, border 0.2s;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s,
+    filter 0.2s,
+    border 0.2s;
   border: 2px solid transparent;
 }
 .tile:hover {
-  box-shadow: 0 8px 32px 0 #cba6f7, 0 4px 16px rgba(0,0,0,0.16);
+  box-shadow:
+    0 8px 32px 0 #cba6f7,
+    0 4px 16px rgba(0, 0, 0, 0.16);
   transform: scale(1.05) translateY(-4px);
   filter: brightness(1.12);
   border: 2px solid #cba6f7;
@@ -38,5 +44,5 @@
 .tile-description {
   font-size: 0.95rem;
   text-align: center;
-  color: rgba(255,255,255,0.85); /* matches nav link color */
+  color: rgba(255, 255, 255, 0.85); /* matches nav link color */
 }

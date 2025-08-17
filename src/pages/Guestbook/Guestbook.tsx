@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import { fetchMessages, deleteMessage } from "./api.service";
-import type { Message } from "./api.service";
-import MessageForm from "./MessageForm";
+import { useEffect, useState } from 'react';
+import { fetchMessages, deleteMessage } from './api.service';
+import type { Message } from './api.service';
+import MessageForm from './MessageForm';
 
 export default function Guestbook() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<string>('');
   const [deletingId, setDeletingId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -16,19 +16,19 @@ export default function Guestbook() {
         setLoading(false);
       })
       .catch((err) => {
-        setError("Failed to fetch messages");
+        setError('Failed to fetch messages');
         setLoading(false);
         console.error(err);
       });
   }, []);
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
     });
   };
 
@@ -41,7 +41,7 @@ export default function Guestbook() {
   };
 
   const handleDeleteMessage = async (messageId: number) => {
-    if (!confirm("Are you sure you want to delete this message?")) {
+    if (!confirm('Are you sure you want to delete this message?')) {
       return;
     }
 
@@ -50,12 +50,12 @@ export default function Guestbook() {
       const response = await deleteMessage(messageId);
       if (response.success) {
         setMessages(messages.filter((message) => message.id !== messageId));
-        setError("");
+        setError('');
       } else {
-        setError(response.message || "Failed to delete message");
+        setError(response.message || 'Failed to delete message');
       }
     } catch (err) {
-      setError("Failed to delete message");
+      setError('Failed to delete message');
       console.error(err);
     } finally {
       setDeletingId(null);
@@ -84,10 +84,7 @@ export default function Guestbook() {
     <div>
       <h1>Guestbook</h1>
 
-      <MessageForm
-        onMessageSubmitted={handleMessageSubmitted}
-        onError={handleError}
-      />
+      <MessageForm onMessageSubmitted={handleMessageSubmitted} onError={handleError} />
 
       <h2>Messages</h2>
       {messages.length === 0 ? (
@@ -98,16 +95,14 @@ export default function Guestbook() {
             <div key={message.id} className="message-card">
               <div className="message-header">
                 <span className="message-author">{message.author}</span>
-                <span className="message-date">
-                  {formatDate(message.created)}
-                </span>
+                <span className="message-date">{formatDate(message.created)}</span>
                 <button
                   onClick={() => handleDeleteMessage(message.id)}
                   disabled={deletingId === message.id}
                   className="delete-button"
                   title="Delete message"
                 >
-                  {deletingId === message.id ? "Deleting..." : "Delete"}
+                  {deletingId === message.id ? 'Deleting...' : 'Delete'}
                 </button>
               </div>
               <div className="message-content">{message.message}</div>

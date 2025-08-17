@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 // Types for individual message objects
 export interface Message {
@@ -30,15 +30,15 @@ export interface DeleteMessageApiResponse {
 }
 
 const API_BASE_URL = import.meta.env.VITE_API_URL;
-const MESSAGE_SERVICE_PATH = "/message";
-const MESSAGES_SERVICE_PATH = "/messages";
+const MESSAGE_SERVICE_PATH = '/message';
+const MESSAGES_SERVICE_PATH = '/messages';
 
 export async function fetchMessage(): Promise<string> {
   try {
     const response = await axios.get(`${API_BASE_URL}${MESSAGE_SERVICE_PATH}`);
     return response.data.message;
   } catch (error) {
-    console.error("Error fetching message:", error);
+    console.error('Error fetching message:', error);
     throw error;
   }
 }
@@ -50,14 +50,12 @@ export async function fetchMessages(): Promise<Message[]> {
     );
     return response.data.data;
   } catch (error) {
-    console.error("Error fetching messages:", error);
+    console.error('Error fetching messages:', error);
     throw error;
   }
 }
 
-export async function postMessage(
-  messageData: NewMessageRequest
-): Promise<Message> {
+export async function postMessage(messageData: NewMessageRequest): Promise<Message> {
   try {
     const response = await axios.post<{ success: boolean; data: Message }>(
       `${API_BASE_URL}${MESSAGES_SERVICE_PATH}`,
@@ -65,21 +63,19 @@ export async function postMessage(
     );
     return response.data.data;
   } catch (error) {
-    console.error("Error posting message:", error);
+    console.error('Error posting message:', error);
     throw error;
   }
 }
 
-export async function deleteMessage(
-  id: number
-): Promise<DeleteMessageApiResponse> {
+export async function deleteMessage(id: number): Promise<DeleteMessageApiResponse> {
   try {
     const response = await axios.delete<DeleteMessageApiResponse>(
       `${API_BASE_URL}${MESSAGES_SERVICE_PATH}/${id}`
     );
     return response.data;
   } catch (error) {
-    console.error("Error deleting message:", error);
+    console.error('Error deleting message:', error);
     throw error;
   }
 }

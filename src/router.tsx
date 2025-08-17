@@ -1,14 +1,14 @@
-import type { RouteObject } from "react-router-dom";
-import App from "./App";
-import Guestbook from "./pages/Guestbook/Guestbook";
-import AboutPage from "./pages/AboutPage/AboutPage";
-import HomePage from "./pages/HomePage/HomePage";
-import PokemonPage from "./pages/PokemonPage/PokemonPage";
-import NotFoundPage from "./pages/NotFoundPage.tsx";
+import type { RouteObject } from 'react-router-dom';
+import App from './App';
+import Guestbook from './pages/Guestbook/Guestbook';
+import AboutPage from './pages/AboutPage/AboutPage';
+import HomePage from './pages/HomePage/HomePage';
+import PokemonPage from './pages/PokemonPage/PokemonPage';
+import NotFoundPage from './pages/NotFoundPage.tsx';
 
 export const routes: RouteObject[] = [
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
@@ -16,19 +16,19 @@ export const routes: RouteObject[] = [
         element: <HomePage />,
       },
       {
-        path: "guestbook",
+        path: 'guestbook',
         element: <Guestbook />,
       },
-        {
-        path: "about",
+      {
+        path: 'about',
         element: <AboutPage />,
       },
       {
-        path: "pokemon",
+        path: 'pokemon',
         element: <PokemonPage />,
       },
       {
-        path: "*",
+        path: '*',
         element: <NotFoundPage />,
       },
     ],

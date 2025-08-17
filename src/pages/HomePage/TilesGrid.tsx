@@ -1,6 +1,6 @@
-import React from "react";
-import Tile from "./Tile";
-import "./TilesGrid.css";
+import React from 'react';
+import Tile from './Tile';
+import './TilesGrid.css';
 
 export interface TileData {
   to: string;

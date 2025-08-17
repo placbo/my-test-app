@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "./PokemonPage.css";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import './PokemonPage.css';
 
 interface Pokemon {
   id: number;
@@ -8,7 +8,7 @@ interface Pokemon {
   sprites: {
     front_default: string;
     other: {
-      "official-artwork": {
+      'official-artwork': {
         front_default: string;
       };
     };
@@ -27,9 +27,7 @@ function PokemonPage() {
     // Fetch total number of Pokemons on mount
     const fetchTotalPokemons = async () => {
       try {
-        const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon?limit=100000"
-        );
+        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100000');
         setTotalPokemons(response.data.count);
       } catch (err) {
         setTotalPokemons(1000); // fallback if API fails
@@ -52,20 +50,18 @@ function PokemonPage() {
     while (attempts < 3 && !found) {
       try {
         const randomId = Math.floor(Math.random() * maxNumber) + 1;
-        const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon/${randomId}`
-        );
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${randomId}`);
         if (response.status === 404) {
           attempts++;
           continue; // Try another random number
         }
         if (!response.ok) {
-          throw new Error("Failed to fetch Pokemon");
+          throw new Error('Failed to fetch Pokemon');
         }
         data = await response.json();
         found = true;
       } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred");
+        setError(err instanceof Error ? err.message : 'An error occurred');
         setImageLoading(false);
         break;
       }
@@ -74,7 +70,7 @@ function PokemonPage() {
     if (found && data) {
       setPokemon(data);
     } else if (!found) {
-      setError("Could not find a valid Pokemon after 3 attempts.");
+      setError('Could not find a valid Pokemon after 3 attempts.');
       setImageLoading(false);
     }
     setLoading(false);
@@ -103,10 +99,7 @@ function PokemonPage() {
     return (
       <div className="pokemon-center">
         <h2>Error: {error}</h2>
-        <button
-          onClick={fetchRandomPokemon}
-          className="pokemon-btn"
-        >
+        <button onClick={fetchRandomPokemon} className="pokemon-btn">
           Try Again
         </button>
       </div>
@@ -117,10 +110,7 @@ function PokemonPage() {
     return (
       <div className="pokemon-center">
         <h2>No Pokemon found</h2>
-        <button
-          onClick={fetchRandomPokemon}
-          className="pokemon-btn"
-        >
+        <button onClick={fetchRandomPokemon} className="pokemon-btn">
           Get Random Pokemon
         </button>
       </div>
@@ -136,20 +126,15 @@ function PokemonPage() {
       <h2>Pokemon Flash Card</h2>
       <div className="pokemon-margin">
         {/* Card Container with 3D perspective */}
-        <div
-          className="pokemon-card-perspective"
-          onClick={handleCardClick}
-        >
+        <div className="pokemon-card-perspective" onClick={handleCardClick}>
           {/* Card with flip animation */}
-          <div
-            className={`pokemon-card${isFlipped ? ' flipped' : ''}`}
-          >
+          <div className={`pokemon-card${isFlipped ? ' flipped' : ''}`}>
             {/* Front of card (Pokemon image) */}
             <div className="pokemon-card-front">
               {imageLoading && <div className="pokemon-spinner" />}
               <img
                 src={
-                  pokemon.sprites.other["official-artwork"].front_default ||
+                  pokemon.sprites.other['official-artwork'].front_default ||
                   pokemon.sprites.front_default
                 }
                 alt="Mystery Pokemon"
@@ -178,10 +163,7 @@ function PokemonPage() {
         </div>
       </div>
 
-      <button
-        onClick={fetchRandomPokemon}
-        className="pokemon-btn"
-      >
+      <button onClick={fetchRandomPokemon} className="pokemon-btn">
         Get New Pokemon Card
       </button>
     </div>
