@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import "./PokemonPage.css";
 
 interface Pokemon {
   id: number;
@@ -87,26 +88,11 @@ function PokemonPage() {
 
   if (loading) {
     return (
-      <div style={{ textAlign: "center", padding: "2rem" }}>
+      <div className="pokemon-center">
         <h2>Random Pokemon</h2>
-        <div style={{ margin: "2rem 0" }}>
-          <h3 style={{ marginBottom: "1rem" }}>Loading Pokemon...</h3>
-          <div
-            style={{
-              width: "300px",
-              height: "300px",
-              margin: "0 auto",
-              border: "2px solid #ddd",
-              borderRadius: "8px",
-              backgroundColor: "#f0f0f0",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "1.2rem",
-              color: "#666",
-            }}
-          >
-            🔄 Loading...
+        <div className="pokemon-margin">
+          <div className="pokemon-loading-box">
+            <div className="pokemon-spinner" />
           </div>
         </div>
       </div>
@@ -115,11 +101,11 @@ function PokemonPage() {
 
   if (error) {
     return (
-      <div style={{ textAlign: "center", padding: "2rem" }}>
+      <div className="pokemon-center">
         <h2>Error: {error}</h2>
         <button
           onClick={fetchRandomPokemon}
-          style={{ marginTop: "1rem", padding: "0.5rem 1rem" }}
+          className="pokemon-btn"
         >
           Try Again
         </button>
@@ -129,11 +115,11 @@ function PokemonPage() {
 
   if (!pokemon) {
     return (
-      <div style={{ textAlign: "center", padding: "2rem" }}>
+      <div className="pokemon-center">
         <h2>No Pokemon found</h2>
         <button
           onClick={fetchRandomPokemon}
-          style={{ marginTop: "1rem", padding: "0.5rem 1rem" }}
+          className="pokemon-btn"
         >
           Get Random Pokemon
         </button>
@@ -146,58 +132,21 @@ function PokemonPage() {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "2rem" }}>
+    <div className="pokemon-center">
       <h2>Pokemon Flash Card</h2>
-      <div style={{ margin: "2rem 0" }}>
+      <div className="pokemon-margin">
         {/* Card Container with 3D perspective */}
         <div
-          style={{
-            perspective: "1000px",
-            display: "inline-block",
-            cursor: "pointer",
-          }}
+          className="pokemon-card-perspective"
           onClick={handleCardClick}
         >
           {/* Card with flip animation */}
           <div
-            style={{
-              position: "relative",
-              width: "300px",
-              height: "350px",
-              transformStyle: "preserve-3d",
-              transition: "transform 0.6s ease-in-out",
-              transform: isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
-            }}
+            className={`pokemon-card${isFlipped ? ' flipped' : ''}`}
           >
             {/* Front of card (Pokemon image) */}
-            <div
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-                backfaceVisibility: "hidden",
-                border: "3px solid #ffd700",
-                borderRadius: "15px",
-                backgroundColor: "#fff",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
-                padding: "1rem",
-                boxSizing: "border-box",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "1.2rem",
-                  marginBottom: "1rem",
-                  fontWeight: "bold",
-                  color: "#333",
-                }}
-              >
-                ?
-              </div>
+            <div className="pokemon-card-front">
+              {imageLoading && <div className="pokemon-spinner" />}
               <img
                 src={
                   pokemon.sprites.other["official-artwork"].front_default ||
@@ -206,77 +155,24 @@ function PokemonPage() {
                 alt="Mystery Pokemon"
                 onLoad={() => setImageLoading(false)}
                 onError={() => setImageLoading(false)}
-                style={{
-                  maxWidth: "250px",
-                  maxHeight: "250px",
-                  opacity: imageLoading ? 0 : 1,
-                  transition: "opacity 0.3s ease",
-                }}
+                style={{ display: imageLoading ? 'none' : 'block' }}
+                className="pokemon-card-front-img loaded"
               />
-              <div
-                style={{
-                  marginTop: "1rem",
-                  fontSize: "0.9rem",
-                  color: "#666",
-                  fontStyle: "italic",
-                }}
-              >
-                Click to reveal!
-              </div>
+              {!imageLoading && (
+                <>
+                  <div className="pokemon-card-front-title">?</div>
+                  <div className="pokemon-card-front-hint">Click to reveal!</div>
+                </>
+              )}
             </div>
 
             {/* Back of card (Pokemon name and details) */}
-            <div
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-                backfaceVisibility: "hidden",
-                transform: "rotateY(180deg)",
-                border: "3px solid #ffd700",
-                borderRadius: "15px",
-                backgroundColor: "#4169e1",
-                color: "white",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 8px 16px rgba(0,0,0,0.2)",
-                padding: "1rem",
-                boxSizing: "border-box",
-              }}
-            >
-              <h3
-                style={{
-                  textTransform: "capitalize",
-                  marginBottom: "1rem",
-                  fontSize: "2rem",
-                  textShadow: "2px 2px 4px rgba(0,0,0,0.3)",
-                }}
-              >
-                {pokemon.name}
-              </h3>
-              <div
-                style={{
-                  fontSize: "1.2rem",
-                  marginBottom: "1rem",
-                  backgroundColor: "rgba(255,255,255,0.2)",
-                  padding: "0.5rem 1rem",
-                  borderRadius: "20px",
-                }}
-              >
+            <div className="pokemon-card-back">
+              <h3 className="pokemon-card-back-title">{pokemon.name}</h3>
+              <div className="pokemon-card-back-id">
                 <strong>ID:</strong> #{pokemon.id}
               </div>
-              <div
-                style={{
-                  fontSize: "0.9rem",
-                  color: "#ffffe0",
-                  fontStyle: "italic",
-                  marginTop: "1rem",
-                }}
-              >
-                Click to see image again!
-              </div>
+              <div className="pokemon-card-back-hint">Click to see image again!</div>
             </div>
           </div>
         </div>
@@ -284,26 +180,7 @@ function PokemonPage() {
 
       <button
         onClick={fetchRandomPokemon}
-        style={{
-          padding: "0.75rem 1.5rem",
-          fontSize: "1rem",
-          backgroundColor: "#28a745",
-          color: "white",
-          border: "none",
-          borderRadius: "8px",
-          cursor: "pointer",
-          marginTop: "1rem",
-          boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
-          transition: "all 0.2s ease",
-        }}
-        onMouseOver={(e) => {
-          e.currentTarget.style.backgroundColor = "#218838";
-          e.currentTarget.style.transform = "translateY(-2px)";
-        }}
-        onMouseOut={(e) => {
-          e.currentTarget.style.backgroundColor = "#28a745";
-          e.currentTarget.style.transform = "translateY(0px)";
-        }}
+        className="pokemon-btn"
       >
         Get New Pokemon Card
       </button>
