@@ -74,7 +74,7 @@ export default function Guestbook() {
   if (error) {
     return (
       <div>
-        <h1>Messages</h1>
+        <h1>Guestbook</h1>
         <div className="card error">{error}</div>
       </div>
     );
@@ -82,7 +82,7 @@ export default function Guestbook() {
 
   return (
     <div>
-      <h1>TestApp</h1>
+      <h1>Guestbook</h1>
 
       <MessageForm
         onMessageSubmitted={handleMessageSubmitted}
