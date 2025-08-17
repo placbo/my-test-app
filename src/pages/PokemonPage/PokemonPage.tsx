@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import './PokemonPage.css';
 
@@ -29,14 +29,14 @@ function PokemonPage() {
       try {
         const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=100000');
         setTotalPokemons(response.data.count);
-      } catch (err) {
+      } catch {
         setTotalPokemons(1000); // fallback if API fails
       }
     };
     fetchTotalPokemons();
   }, []);
 
-  const fetchRandomPokemon = async () => {
+  const fetchRandomPokemon = useCallback(async () => {
     setLoading(true);
     setError(null);
     setImageLoading(true);
@@ -74,18 +74,18 @@ function PokemonPage() {
       setImageLoading(false);
     }
     setLoading(false);
-  };
+  }, [totalPokemons]);
 
   useEffect(() => {
     if (totalPokemons !== null) {
       fetchRandomPokemon();
     }
-  }, [totalPokemons]);
+  }, [totalPokemons, fetchRandomPokemon]);
 
   if (loading) {
     return (
       <div className="pokemon-center">
-        <h2>Random Pokemon</h2>
+        <h2>Pokemon Flash Card</h2>
         <div className="pokemon-margin">
           <div className="pokemon-loading-box">
             <div className="pokemon-spinner" />
