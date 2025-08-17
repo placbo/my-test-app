@@ -22,4 +22,3 @@ const Tile: React.FC<TileProps> = ({ to, image, title, description }) => (
 );
 
 export default Tile;
-

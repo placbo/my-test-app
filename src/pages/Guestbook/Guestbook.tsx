@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { fetchMessages, deleteMessage } from "../api.service";
-import type { Message } from "../api.service";
-import MessageForm from "../components/MessageForm";
+import { fetchMessages, deleteMessage } from "./api.service";
+import type { Message } from "./api.service";
+import MessageForm from "./MessageForm";
 
 export default function Guestbook() {
   const [messages, setMessages] = useState<Message[]>([]);

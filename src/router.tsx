@@ -1,9 +1,9 @@
 import type { RouteObject } from "react-router-dom";
 import App from "./App";
-import Guestbook from "./pages/Guestbook.tsx";
-import AboutPage from "./pages/AboutPage.tsx";
-import HomePage from "./pages/HomePage.tsx";
-import PokemonPage from "./pages/PokemonPage.tsx";
+import Guestbook from "./pages/Guestbook/Guestbook";
+import AboutPage from "./pages/AboutPage/AboutPage";
+import HomePage from "./pages/HomePage/HomePage";
+import PokemonPage from "./pages/PokemonPage/PokemonPage";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 
 export const routes: RouteObject[] = [

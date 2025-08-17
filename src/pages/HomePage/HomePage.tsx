@@ -1,5 +1,5 @@
-import TilesGrid from "../components/TilesGrid";
-import type { TileData } from "../components/TilesGrid";
+import TilesGrid from "./TilesGrid";
+import type { TileData } from "./TilesGrid";
 import "./HomePage.css";
 
 const tiles: TileData[] = [

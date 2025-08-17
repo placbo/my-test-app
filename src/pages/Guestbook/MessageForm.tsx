@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { postMessage } from "../api.service";
-import type { Message, NewMessageRequest } from "../api.service";
+import { postMessage } from "./api.service";
+import type { Message, NewMessageRequest } from "./api.service";
 
 interface MessageFormProps {
   onMessageSubmitted: (newMessage: Message) => void;
