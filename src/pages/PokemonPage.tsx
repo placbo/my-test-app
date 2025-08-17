@@ -14,7 +14,7 @@ interface Pokemon {
   };
 }
 
-function Pokemon() {
+function PokemonPage() {
   const [pokemon, setPokemon] = useState<Pokemon | null>(null);
   const [loading, setLoading] = useState(true);
   const [imageLoading, setImageLoading] = useState(false);
@@ -80,8 +80,10 @@ function Pokemon() {
   };
 
   useEffect(() => {
-    fetchRandomPokemon();
-  }, []);
+    if (totalPokemons !== null) {
+      fetchRandomPokemon();
+    }
+  }, [totalPokemons]);
 
   if (loading) {
     return (
@@ -309,4 +311,4 @@ function Pokemon() {
   );
 }
 
-export default Pokemon;
+export default PokemonPage;

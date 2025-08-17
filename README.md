@@ -2,6 +2,8 @@
 
 A React + TypeScript application powered by Vite.
 
+The application is made as a playground for new projects before they evolve into larger applications.
+
 ## Project Structure
 
 ```
@@ -18,31 +20,24 @@ A React + TypeScript application powered by Vite.
 
 ## Running Locally
 
-1. **Install dependencies:**
+**Make sure the API is running (See readme for testapi-project:**
+
+**Install dependencies:**
    ```bash
    npm install
    ```
-2. **Start the development server:**
+**Start the development server:**
    ```bash
-   npm run dev
+   npm start
    ```
-   The app will be available at `http://localhost:5173` (default Vite port).
+   The app will be available at `http://localhost:5173` 
 
 ## Deployment
 
-A deployment script (`deploy.sh`) is provided. You may need to adjust it for your hosting environment.
+A deployment script is provided.
 
-1. **Build the application:**
    ```bash
-   npm run build
-   ```
-2. **Run the deployment script:**
-   ```bash
-   ./deploy.sh
-   ```
-   Ensure you have executable permissions:
-   ```bash
-   chmod +x deploy.sh
+   sh deploy.sh
    ```
 
 ## Application Pages
@@ -55,18 +50,9 @@ The application includes the following pages:
   - Includes a form to add messages.
   - Displays a list of all messages.
 
-- **About** (`/about`):
-  - Contains information about the application or project.
-  - May include team details, purpose, or background.
 
 - **Pokemon** (`/pokemon`):
-  - Displays Pokémon-related content or features.
-  - May show a list, details, or search functionality for Pokémon.
-
-- **NotFound** (any undefined route):
-  - Shown when a user navigates to a non-existent page.
-  - Displays a 404 error or friendly message.
+  - Flashcard style page to learn about Pokémon.
 
 ## Notes
 - Update environment variables or configuration as needed for your deployment target.
-- For more details, see the source files and comments.

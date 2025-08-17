@@ -3,7 +3,7 @@ import { fetchMessages, deleteMessage } from "../api.service";
 import type { Message } from "../api.service";
 import MessageForm from "../components/MessageForm";
 
-export default function Home() {
+export default function Guestbook() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
@@ -82,7 +82,7 @@ export default function Home() {
 
   return (
     <div>
-      <h1>Welcome, Karl</h1>
+      <h1>TestApp</h1>
 
       <MessageForm
         onMessageSubmitted={handleMessageSubmitted}

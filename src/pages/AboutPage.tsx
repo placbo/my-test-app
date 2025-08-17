@@ -1,4 +1,4 @@
-export default function About() {
+export default function AboutPage() {
   const currentDate = new Date().toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",

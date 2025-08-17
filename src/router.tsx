@@ -1,9 +1,10 @@
 import type { RouteObject } from "react-router-dom";
 import App from "./App";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Pokemon from "./pages/Pokemon";
-import NotFound from "./pages/NotFound";
+import Guestbook from "./pages/Guestbook.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
+import HomePage from "./pages/HomePage.tsx";
+import PokemonPage from "./pages/PokemonPage.tsx";
+import NotFoundPage from "./pages/NotFoundPage.tsx";
 
 export const routes: RouteObject[] = [
   {
@@ -12,19 +13,23 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <HomePage />,
       },
       {
+        path: "guestbook",
+        element: <Guestbook />,
+      },
+        {
         path: "about",
-        element: <About />,
+        element: <AboutPage />,
       },
       {
         path: "pokemon",
-        element: <Pokemon />,
+        element: <PokemonPage />,
       },
       {
         path: "*",
-        element: <NotFound />,
+        element: <NotFoundPage />,
       },
     ],
   },
