@@ -19,7 +19,7 @@ export default function AboutPage() {
             throw new Error('This is your first error!');
           }}
         >
-          Break the world
+          Trigger an Error (for testing purposes in sanity)
         </button>
       </div>
 
