@@ -22,7 +22,7 @@ const tiles: TileData[] = [
     description: 'Learn more about this app and its creator.',
   },
   {
-    to: 'https://mytaste.kasselars.com',
+    to: 'http://mytaste.kasselars.com',
     image: 'https://img.icons8.com/ios-filled/100/ffffff/restaurant.png', // white restaurant icon
     title: 'MyTaste',
     description: 'Ranking food and drinks.',
