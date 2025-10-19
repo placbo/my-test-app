@@ -31,8 +31,13 @@ const generatedCountryCapitalsFlashcards = (): FlashcardData[] => {
 // All flashcard sets in one place - easy to add new ones
 export const FLASHCARD_SETS: FlashcardSetInfo[] = [
   {
+    key: 'country_capitals',
+    displayName: 'Country Capitals',
+    data: generatedCountryCapitalsFlashcards()
+  },
+  {
     key: 'general_knowledge',
-    displayName: 'General Knowledge',
+    displayName: 'Diverse AI-genererte spørsmål',
     data: [
       { front: 'What is the chemical symbol for gold?', back: 'Au' },
       { front: 'What year did World War II end?', back: '1945' },
@@ -40,13 +45,7 @@ export const FLASHCARD_SETS: FlashcardSetInfo[] = [
       { front: 'What is the speed of light?', back: '299,792,458 m/s' },
       { front: 'Who painted the Mona Lisa?', back: 'Leonardo da Vinci' },
       { front: 'What is the longest river in the world?', back: 'The Nile River' },
-      { front: 'What is the square root of 64?', back: '8' }
-    ]
-  },
-  {
-    key: 'basic_facts',
-    displayName: 'Basic Facts',
-    data: [
+      { front: 'What is the square root of 64?', back: '8' },
       { front: 'What is the capital of France?', back: 'Paris' },
       { front: 'What is 2 + 2?', back: '4' },
       { front: 'What is the largest planet in our solar system?', back: 'Jupiter' },
@@ -56,11 +55,5 @@ export const FLASHCARD_SETS: FlashcardSetInfo[] = [
       { front: 'How many continents are there?', back: '7' },
       { front: 'What is the currency of Japan?', back: 'Yen' }
     ]
-  },
-
-  {
-    key: 'country_capitals',
-    displayName: 'Country Capitals',
-    data: generatedCountryCapitalsFlashcards()
   }
 ];
