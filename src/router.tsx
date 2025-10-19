@@ -5,6 +5,7 @@ import AboutPage from './pages/AboutPage/AboutPage';
 import HomePage from './pages/HomePage/HomePage';
 import PokemonPage from './pages/PokemonPage/PokemonPage';
 import NotFoundPage from './pages/NotFoundPage.tsx';
+import Flashcards from './pages/Flashcards/Flashcards.tsx';
 
 export const routes: RouteObject[] = [
   {
@@ -26,6 +27,10 @@ export const routes: RouteObject[] = [
       {
         path: 'pokemon',
         element: <PokemonPage />,
+      },
+      {
+        path: 'flashcards',
+        element: <Flashcards />,
       },
       {
         path: '*',

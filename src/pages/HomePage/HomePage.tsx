@@ -16,6 +16,12 @@ const tiles: TileData[] = [
     description: 'Pokemon flashcards.',
   },
   {
+    to: '/flashcards',
+    image: 'https://img.icons8.com/ios-filled/100/ffffff/pokemon.png', // white pokemon icon
+    title: 'Flashcards',
+    description: 'Generic flashcards.',
+  },
+  {
     to: '/about',
     image: 'https://img.icons8.com/ios-filled/100/ffffff/info.png', // white info icon
     title: 'About',
