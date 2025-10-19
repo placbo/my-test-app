@@ -1,3 +1,5 @@
+import countries from './all_countries.json';
+
 export interface FlashcardData {
   front: string;
   back: string;
@@ -9,9 +11,21 @@ export interface FlashcardSetInfo {
   data: FlashcardData[];
 }
 
-// Fix: this should be a function returning FlashcardData[] (and the name was misspelled)
 const generatedCountryCapitalsFlashcards = (): FlashcardData[] => {
-  return [{ front: 'What is the capital of Norway?', back: 'Oslo' }];
+  // Some entries may be missing a capital or have an empty array -> filter those out
+  return (
+    (countries as any[])
+      .map((country) => {
+        const commonName = country?.name?.common;
+        // If there are multiple capitals, join them with a comma and space
+        const capital =
+          Array.isArray(country?.capital) && country.capital.length > 0 ? country.capital.join(', ') : undefined;
+        if (!commonName || !capital) return null;
+        return { front: commonName, back: capital } as FlashcardData;
+      })
+      // filter out null/undefined and tell TypeScript the result is FlashcardData[]
+      .filter((flashcardData): flashcardData is FlashcardData => flashcardData != null)
+  );
 };
 
 // All flashcard sets in one place - easy to add new ones
