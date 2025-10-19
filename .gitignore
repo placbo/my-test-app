@@ -16,6 +16,7 @@ tmp/
 temp/
 backups/
 *.local
+.eslintcache
 
 # Editor directories and files
 .vscode/*
