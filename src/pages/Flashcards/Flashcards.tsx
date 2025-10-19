@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import './Flashcards.css';
-import { FLASHCARD_SETS, FLASHCARD_SET } from './flashcardData';
+import { FLASHCARD_SETS } from './flashcardData';
 import type { FlashcardData, FlashcardSet } from './flashcardData';
 
 function Flashcards() {
-  const [selectedSet, setSelectedSet] = useState<FlashcardSet>(FLASHCARD_SET.GENERAL_KNOWLEDGE);
+  const [selectedSet, setSelectedSet] = useState<FlashcardSet>(FLASHCARD_SETS[0].key); //use first set as default
   const [currentCard, setCurrentCard] = useState<FlashcardData | null>(null);
   const [isFlipped, setIsFlipped] = useState(false);
 

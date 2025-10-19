@@ -17,7 +17,7 @@ const tiles: TileData[] = [
   },
   {
     to: '/flashcards',
-    image: 'https://img.icons8.com/ios-filled/100/ffffff/pokemon.png', // white pokemon icon
+    image: 'https://img.icons8.com/ios-filled/100/ffffff/flashcards.png', // flashcard/study card icon
     title: 'Flashcards',
     description: 'Generic flashcards.'
   },
@@ -40,6 +40,11 @@ export default function HomePage() {
     <div>
       <h1 className="homepage-title">MyApp</h1>
       <TilesGrid tiles={tiles} />
+      <div style={{ textAlign: 'center', marginTop: '2rem', fontSize: '0.8rem', color: '#666' }}>
+        <a href="https://icons8.com" target="_blank" rel="noopener noreferrer">
+          Icons by Icons8
+        </a>
+      </div>
     </div>
   );
 }
