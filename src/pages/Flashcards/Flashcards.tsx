@@ -1,15 +1,15 @@
 import { useState } from 'react';
 import './Flashcards.css';
-import { FLASHCARD_SETS } from './flashcardData';
+import { FlashcardSets } from './flashcardData';
 import type { FlashcardData } from './flashcardData';
 
 function Flashcards() {
-  const [selectedSet, setSelectedSet] = useState<FlashcardSet>(FLASHCARD_SETS[0].key); //use first set as default
+  const [selectedSet, setSelectedSet] = useState<string>(FlashcardSets[0].key); //use first set as default
   const [currentCard, setCurrentCard] = useState<FlashcardData | null>(null);
   const [isFlipped, setIsFlipped] = useState(false);
 
   const getCurrentSetInfo = () => {
-    return FLASHCARD_SETS.find((set) => set.key === selectedSet) || FLASHCARD_SETS[0];
+    return FlashcardSets.find((set) => set.key === selectedSet) || FlashcardSets[0];
   };
 
   const getRandomCard = () => {
@@ -25,7 +25,7 @@ function Flashcards() {
   };
 
   const handleSetChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value as FlashcardSet;
+    const value = e.target.value;
     setSelectedSet(value);
     setIsFlipped(false);
     setCurrentCard(null); // clear current card so user knows the set changed
@@ -55,7 +55,7 @@ function Flashcards() {
           Choose set:
         </label>
         <select id="flashcard-set-select" value={selectedSet} onChange={handleSetChange} className="flashcard-select">
-          {FLASHCARD_SETS.map((set) => (
+          {FlashcardSets.map((set) => (
             <option key={set.key} value={set.key}>
               {set.displayName}
             </option>

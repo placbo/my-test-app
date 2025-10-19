@@ -14,7 +14,7 @@ export interface FlashcardSetInfo {
 const generatedCountryCapitalsFlashcards = (): FlashcardData[] => {
   // Some entries may be missing a capital or have an empty array -> filter those out
   return (
-    (countries as any[])
+    countries
       .map((country) => {
         const commonName = country?.name?.common;
         // If there are multiple capitals, join them with a comma and space
@@ -29,7 +29,7 @@ const generatedCountryCapitalsFlashcards = (): FlashcardData[] => {
 };
 
 // All flashcard sets in one place - easy to add new ones
-export const FLASHCARD_SETS: FlashcardSetInfo[] = [
+export const FlashcardSets: FlashcardSetInfo[] = [
   {
     key: 'country_capitals',
     displayName: 'Country Capitals',
