@@ -7,32 +7,32 @@ const tiles: TileData[] = [
     to: '/guestbook',
     image: 'https://img.icons8.com/ios-filled/100/ffffff/book.png', // white book icon
     title: 'Guestbook',
-    description: 'Leave a message and see what others have written.',
+    description: 'Leave a message and see what others have written.'
   },
   {
     to: '/pokemon',
     image: 'https://img.icons8.com/ios-filled/100/ffffff/pokemon.png', // white pokemon icon
     title: 'Pokemon',
-    description: 'Pokemon flashcards.',
+    description: 'Pokemon flashcards.'
   },
   {
     to: '/flashcards',
     image: 'https://img.icons8.com/ios-filled/100/ffffff/pokemon.png', // white pokemon icon
     title: 'Flashcards',
-    description: 'Generic flashcards.',
+    description: 'Generic flashcards.'
   },
   {
     to: '/about',
     image: 'https://img.icons8.com/ios-filled/100/ffffff/info.png', // white info icon
     title: 'About',
-    description: 'Learn more about this app and its creator.',
+    description: 'Learn more about this app and its creator.'
   },
   {
     to: 'http://mytaste.kasselars.com',
     image: 'https://img.icons8.com/ios-filled/100/ffffff/restaurant.png', // white restaurant icon
     title: 'MyTaste',
-    description: 'Ranking food and drinks.',
-  },
+    description: 'Ranking food and drinks.'
+  }
 ];
 
 export default function HomePage() {

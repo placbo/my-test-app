@@ -45,9 +45,7 @@ export async function fetchMessage(): Promise<string> {
 
 export async function fetchMessages(): Promise<Message[]> {
   try {
-    const response = await axios.get<MessagesApiResponse>(
-      `${API_BASE_URL}${MESSAGES_SERVICE_PATH}`
-    );
+    const response = await axios.get<MessagesApiResponse>(`${API_BASE_URL}${MESSAGES_SERVICE_PATH}`);
     return response.data.data;
   } catch (error) {
     console.error('Error fetching messages:', error);
@@ -70,9 +68,7 @@ export async function postMessage(messageData: NewMessageRequest): Promise<Messa
 
 export async function deleteMessage(id: number): Promise<DeleteMessageApiResponse> {
   try {
-    const response = await axios.delete<DeleteMessageApiResponse>(
-      `${API_BASE_URL}${MESSAGES_SERVICE_PATH}/${id}`
-    );
+    const response = await axios.delete<DeleteMessageApiResponse>(`${API_BASE_URL}${MESSAGES_SERVICE_PATH}/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error deleting message:', error);

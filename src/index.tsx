@@ -9,7 +9,7 @@ Sentry.init({
   dsn: 'https://f9de89bc2712f87ff7e283aeac4f443b@o4509570733834240.ingest.de.sentry.io/4509570735931472',
   // Setting this option to true will send default PII data to Sentry.
   // For example, automatic IP address collection on events
-  sendDefaultPii: true,
+  sendDefaultPii: true
 });
 
 const router = createBrowserRouter(routes);

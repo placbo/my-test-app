@@ -8,11 +8,11 @@ export default defineConfig({
     react(),
     sentryVitePlugin({
       org: 'pcb-3o',
-      project: 'javascript-react',
-    }),
+      project: 'javascript-react'
+    })
   ],
 
   build: {
-    sourcemap: true,
-  },
+    sourcemap: true
+  }
 });

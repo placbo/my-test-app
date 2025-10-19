@@ -10,7 +10,7 @@ interface MessageFormProps {
 export default function MessageForm({ onMessageSubmitted, onError }: MessageFormProps) {
   const [formData, setFormData] = useState<NewMessageRequest>({
     text: '',
-    author: '',
+    author: ''
   });
   const [submitting, setSubmitting] = useState<boolean>(false);
 

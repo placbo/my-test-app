@@ -14,28 +14,28 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <HomePage />,
+        element: <HomePage />
       },
       {
         path: 'guestbook',
-        element: <Guestbook />,
+        element: <Guestbook />
       },
       {
         path: 'about',
-        element: <AboutPage />,
+        element: <AboutPage />
       },
       {
         path: 'pokemon',
-        element: <PokemonPage />,
+        element: <PokemonPage />
       },
       {
         path: 'flashcards',
-        element: <Flashcards />,
+        element: <Flashcards />
       },
       {
         path: '*',
-        element: <NotFoundPage />,
-      },
-    ],
-  },
+        element: <NotFoundPage />
+      }
+    ]
+  }
 ];

@@ -2,7 +2,7 @@ export default function AboutPage() {
   const currentDate = new Date().toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric',
+    day: 'numeric'
   });
 
   return (
@@ -32,7 +32,7 @@ export default function AboutPage() {
           style={{
             border: '2px solid #ddd',
             borderRadius: '10px',
-            backgroundColor: '#f0f8ff',
+            backgroundColor: '#f0f8ff'
           }}
         >
           {/* Sky background */}
@@ -50,30 +50,14 @@ export default function AboutPage() {
 
           {/* Big barn doors in the middle */}
           <rect x="225" y="120" width="30" height="30" fill="#654321" />
-          <rect
-            x="224"
-            y="119"
-            width="32"
-            height="32"
-            fill="none"
-            stroke="#8B4513"
-            strokeWidth="2"
-          />
+          <rect x="224" y="119" width="32" height="32" fill="none" stroke="#8B4513" strokeWidth="2" />
           <line x1="240" y1="120" x2="240" y2="150" stroke="#8B4513" strokeWidth="2" />
           <circle cx="233" cy="135" r="1.5" fill="#000" />
           <circle cx="247" cy="135" r="1.5" fill="#000" />
 
           {/* Small hay loft window */}
           <rect x="230" y="85" width="20" height="10" fill="#654321" />
-          <rect
-            x="229"
-            y="84"
-            width="22"
-            height="12"
-            fill="none"
-            stroke="#8B4513"
-            strokeWidth="1"
-          />
+          <rect x="229" y="84" width="22" height="12" fill="none" stroke="#8B4513" strokeWidth="1" />
 
           {/* Barn roof details */}
           <line x1="210" y1="110" x2="270" y2="110" stroke="#8B0000" strokeWidth="2" />
@@ -139,12 +123,7 @@ export default function AboutPage() {
           <ellipse cx="95" cy="195" rx="4" ry="10" fill="#FFB6C1" />
 
           {/* Pig tail */}
-          <path
-            d="M 110 175 Q 115 170 110 165 Q 105 170 110 175"
-            stroke="#FFB6C1"
-            strokeWidth="3"
-            fill="none"
-          />
+          <path d="M 110 175 Q 115 170 110 165 Q 105 170 110 175" stroke="#FFB6C1" strokeWidth="3" fill="none" />
 
           {/* Farm fence */}
           <rect x="10" y="160" width="3" height="30" fill="#8B4513" />
@@ -153,9 +132,7 @@ export default function AboutPage() {
           <rect x="8" y="170" width="27" height="3" fill="#8B4513" />
           <rect x="8" y="180" width="27" height="3" fill="#8B4513" />
         </svg>
-        <p style={{ marginTop: '10px', fontStyle: 'italic', color: '#666' }}>
-          Farmer Joe and his little pig friend
-        </p>
+        <p style={{ marginTop: '10px', fontStyle: 'italic', color: '#666' }}>Farmer Joe and his little pig friend</p>
       </div>
     </div>
   );

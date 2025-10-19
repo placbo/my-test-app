@@ -1,49 +1,21 @@
 import { useState } from 'react';
 import './Flashcards.css';
-
-interface FlashcardData {
-  front: string;
-  back: string;
-}
-
-// Hardcoded flashcard data - you can customize this list
-const flashcardData: FlashcardData[] = [
-  { front: 'What is the chemical symbol for gold?', back: 'Au' },
-  { front: 'What year did World War II end?', back: '1945' },
-  { front: 'What is the smallest country in the world?', back: 'Vatican City' },
-  { front: 'What is the speed of light?', back: '299,792,458 m/s' },
-  { front: 'Who painted the Mona Lisa?', back: 'Leonardo da Vinci' },
-  { front: 'What is the longest river in the world?', back: 'The Nile River' },
-  { front: 'What is the square root of 64?', back: '8' },
-];
-const flashcardData2: FlashcardData[] = [
-  { front: 'What is the capital of France?', back: 'Paris' },
-  { front: 'What is 2 + 2?', back: '4' },
-  { front: 'What is the largest planet in our solar system?', back: 'Jupiter' },
-  { front: "Who wrote 'Romeo and Juliet'?", back: 'William Shakespeare' },
-  { front: 'In which year was the first iPhone released?', back: '2007' },
-  { front: 'What is the hardest natural substance?', back: 'Diamond' },
-  { front: 'How many continents are there?', back: '7' },
-  { front: 'What is the currency of Japan?', back: 'Yen' },
-];
-
-// Note: second set inlined below to avoid unused-variable diagnostics
-
-type DatasetKey = 'set1' | 'set2'; //BRUKES I DROPDOWN
+import { FLASHCARD_SETS, FLASHCARD_SET } from './flashcardData';
+import type { FlashcardData, FlashcardSet } from './flashcardData';
 
 function Flashcards() {
-  const [selectedSet, setSelectedSet] = useState<DatasetKey>('set1');
+  const [selectedSet, setSelectedSet] = useState<FlashcardSet>(FLASHCARD_SET.GENERAL_KNOWLEDGE);
   const [currentCard, setCurrentCard] = useState<FlashcardData | null>(null);
   const [isFlipped, setIsFlipped] = useState(false);
 
-  const datasets: Record<DatasetKey, FlashcardData[]> = {
-    set1: flashcardData,
-    set2: flashcardData2,
+  const getCurrentSetInfo = () => {
+    return FLASHCARD_SETS.find((set) => set.key === selectedSet) || FLASHCARD_SETS[0];
   };
 
   const getRandomCard = () => {
     setIsFlipped(false); // Reset flip state when getting new card
-    const pool = datasets[selectedSet] || [];
+    const currentSetInfo = getCurrentSetInfo();
+    const pool = currentSetInfo.data;
     if (pool.length === 0) {
       setCurrentCard(null);
       return;
@@ -53,7 +25,7 @@ function Flashcards() {
   };
 
   const handleSetChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const value = e.target.value as DatasetKey;
+    const value = e.target.value as FlashcardSet;
     setSelectedSet(value);
     setIsFlipped(false);
     setCurrentCard(null); // clear current card so user knows the set changed
@@ -63,7 +35,15 @@ function Flashcards() {
     setIsFlipped((prev) => !prev);
   };
 
-  const pool = datasets[selectedSet] || [];
+  const handleCardKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    // Trigger flip on Enter or Space for keyboard users
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setIsFlipped((prev) => !prev);
+    }
+  };
+
+  const currentSetInfo = getCurrentSetInfo();
 
   return (
     <div className="flashcard-center">
@@ -74,23 +54,28 @@ function Flashcards() {
         <label htmlFor="flashcard-set-select" style={{ marginRight: 8 }}>
           Choose set:
         </label>
-        <select
-          id="flashcard-set-select"
-          value={selectedSet}
-          onChange={handleSetChange}
-          className="flashcard-select"
-        >
-          <option value="set1">Set 1</option>
-          <option value="set2">Set 2</option>
+        <select id="flashcard-set-select" value={selectedSet} onChange={handleSetChange} className="flashcard-select">
+          {FLASHCARD_SETS.map((set) => (
+            <option key={set.key} value={set.key}>
+              {set.displayName}
+            </option>
+          ))}
         </select>
-        <span style={{ marginLeft: 12, color: '#666' }}>({pool.length} cards)</span>
+        <span style={{ marginLeft: 12, color: '#666' }}>({currentSetInfo.data.length} cards)</span>
       </div>
 
       {currentCard ? (
         <>
           <div className="flashcard-margin">
             {/* Card Container with 3D perspective */}
-            <div className="flashcard-card-perspective" onClick={handleCardClick}>
+            <div
+              className="flashcard-card-perspective"
+              onClick={handleCardClick}
+              role="button"
+              tabIndex={0}
+              onKeyDown={handleCardKeyDown}
+              aria-pressed={isFlipped}
+            >
               {/* Card with flip animation */}
               <div className={`flashcard-card${isFlipped ? ' flipped' : ''}`}>
                 {/* Front of card (Question) */}
@@ -113,7 +98,7 @@ function Flashcards() {
         </>
       ) : (
         <div className="flashcard-center">
-          {pool.length === 0 ? (
+          {currentSetInfo.data.length === 0 ? (
             <>
               <h3>No flashcards in selected set</h3>
               <p style={{ color: '#666' }}>Please choose another set.</p>
