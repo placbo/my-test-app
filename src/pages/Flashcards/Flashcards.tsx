@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Flashcards.css';
 import { FLASHCARD_SETS } from './flashcardData';
-import type { FlashcardData, FlashcardSet } from './flashcardData';
+import type { FlashcardData } from './flashcardData';
 
 function Flashcards() {
   const [selectedSet, setSelectedSet] = useState<FlashcardSet>(FLASHCARD_SETS[0].key); //use first set as default
