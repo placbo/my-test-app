@@ -7,6 +7,7 @@ function Flashcards() {
   const [selectedSet, setSelectedSet] = useState<string>(FlashcardSets[0].key); //use first set as default
   const [currentCard, setCurrentCard] = useState<FlashcardData | null>(null);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [hideBackContent, setHideBackContent] = useState(false);
 
   const getCurrentSetInfo = () => {
     return FlashcardSets.find((set) => set.key === selectedSet) || FlashcardSets[0];
@@ -14,14 +15,22 @@ function Flashcards() {
 
   const getRandomCard = () => {
     setIsFlipped(false); // Reset flip state when getting new card
+    setHideBackContent(true); // Hide back content during transition
+
     const currentSetInfo = getCurrentSetInfo();
     const pool = currentSetInfo.data;
     if (pool.length === 0) {
       setCurrentCard(null);
+      setHideBackContent(false);
       return;
     }
     const randomIndex = Math.floor(Math.random() * pool.length);
     setCurrentCard(pool[randomIndex]);
+
+    // Reset hideBackContent after the flip transition completes (0.6s)
+    setTimeout(() => {
+      setHideBackContent(false);
+    }, 600);
   };
 
   const handleSetChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -85,8 +94,14 @@ function Flashcards() {
                 </div>
                 {/* Back of card (Answer) */}
                 <div className="flashcard-card-back">
-                  <div className="flashcard-card-back-title">{currentCard.back}</div>
-                  <div className="flashcard-card-back-hint">Click to see question again!</div>
+                  {hideBackContent ? (
+                    <div className="flashcard-card-back-title"></div>
+                  ) : (
+                    <>
+                      <div className="flashcard-card-back-title">{currentCard.back}</div>
+                      <div className="flashcard-card-back-hint">Click to see question again!</div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

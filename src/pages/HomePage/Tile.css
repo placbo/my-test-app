@@ -17,11 +17,11 @@
 }
 .tile:hover {
   box-shadow:
-    0 8px 32px 0 #cba6f7,
+    0 8px 32px 0 #ffd93d,
     0 4px 16px rgba(0, 0, 0, 0.16);
   transform: scale(1.05) translateY(-4px);
   filter: brightness(1.12);
-  border: 2px solid #cba6f7;
+  border: 2px solid #ffd93d;
 }
 .tile-image-wrapper {
   width: 100%;
@@ -40,7 +40,7 @@
   font-size: 1.2rem;
   margin: 0.5rem 0 0.2rem 0;
   text-align: center;
-  color: #cba6f7; /* matches header h1 color */
+  color: #ffd93d; /* matches header h1 color */
 }
 .tile-description {
   font-size: 0.95rem;

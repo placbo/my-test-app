@@ -1,0 +1,13 @@
+/* Theme variables - define header and app background colors */
+:root {
+  --header-bg: #1e1e2e; /* header color */
+  --app-bg:    #181825; /* darker variant of header for page background */
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --header-bg: #ffffff;
+    --app-bg:    #f7f8fb;
+  }
+}
+

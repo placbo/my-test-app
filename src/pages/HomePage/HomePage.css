@@ -1,6 +1,6 @@
 .homepage-title {
   text-align: center;
-  color: #cba6f7;
+  color: rgba(255, 255, 255, 0.87);
   font-size: 2.5rem;
   font-weight: 700;
   margin-top: 2.5rem;
@@ -8,4 +8,8 @@
   letter-spacing: 0.02em;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.HomePage {
+padding: 2rem 0;
 }

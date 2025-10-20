@@ -37,7 +37,7 @@ const tiles: TileData[] = [
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="HomePage">
       <h1 className="homepage-title">MyApp</h1>
       <TilesGrid tiles={tiles} />
       <div style={{ textAlign: 'center', marginTop: '2rem', fontSize: '0.8rem', color: '#666' }}>

@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './variables.css';
 import './index.css';
 import { routes } from './router';
 import * as Sentry from '@sentry/react';
